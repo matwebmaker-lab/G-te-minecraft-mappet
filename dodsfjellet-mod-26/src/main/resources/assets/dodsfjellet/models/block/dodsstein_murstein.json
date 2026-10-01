@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "dodsfjellet:block/dodsstein_murstein"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "type": "minecraft:sequence",
+  "sequence": [
+    "minecraft:bedrock_floor",
+    {
+      "type": "minecraft:condition",
+      "if_true": {
+        "type": "minecraft:above_preliminary_surface"
+      },
+      "then_run": {
+        "type": "minecraft:sequence",
+        "sequence": [
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:biome",
+              "biome_is": [
+                "dodsfjellet:blodmyra"
+              ]
+            },
+            "then_run": {
+              "type": "minecraft:sequence",
+              "sequence": [
+                {
+                  "type": "minecraft:condition",
+                  "if_true": "minecraft:on_floor",
+                  "then_run": {
+                    "type": "minecraft:block",
+                    "result_state": "dodsfjellet:blodmose"
+                  }
+                },
+                {
+                  "type": "minecraft:condition",
+                  "if_true": "minecraft:under_floor",
+                  "then_run": {
+                    "type": "minecraft:block",
+                    "result_state": "dodsfjellet:askejord"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:biome",
+              "biome_is": [
+                "dodsfjellet:krystallmarkene"
+              ]
+            },
+            "then_run": {
+              "type": "minecraft:sequence",
+              "sequence": [
+                {
+                  "type": "minecraft:condition",
+                  "if_true": "minecraft:on_floor",
+                  "then_run": {
+                    "type": "minecraft:block",
+                    "result_state": "dodsfjellet:polert_dodsstein"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": "minecraft:on_floor",
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": "dodsfjellet:askejord"
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": "minecraft:under_floor",
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": "dodsfjellet:askejord"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:condition",
+      "if_true": {
+        "type": "minecraft:not",
+        "invert": {
+          "type": "minecraft:y_above",
+          "anchor": {
+            "absolute": 0
+          },
+          "surface_depth_multiplier": 0,
+          "add_stone_depth": false
+        }
+      },
+      "then_run": {
+        "type": "minecraft:block",
+        "result_state": "minecraft:deepslate"
+      }
+    }
+  ]
+}

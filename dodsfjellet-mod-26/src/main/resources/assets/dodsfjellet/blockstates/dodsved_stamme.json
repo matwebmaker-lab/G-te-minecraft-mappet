@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dodsfjellet:block/dodsved_stamme_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "dodsfjellet:block/dodsved_stamme"
+    },
+    "axis=z": {
+      "model": "dodsfjellet:block/dodsved_stamme_horizontal",
+      "x": 90
+    }
+  }
+}

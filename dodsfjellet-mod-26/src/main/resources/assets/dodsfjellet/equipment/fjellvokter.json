@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "dodsfjellet:fjellvokter"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "dodsfjellet:fjellvokter"
+      }
+    ]
+  }
+}

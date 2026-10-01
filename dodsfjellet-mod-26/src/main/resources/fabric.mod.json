@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "dodsfjellet",
+  "version": "${version}",
+  "name": "Dødsfjellet",
+  "description": "Dødsriket-dimensjonen, vakter som oppfører seg som spillere, oppgraderingssmia, evner og PvP-øving – laget for Dødsfjellet-kartet.",
+  "authors": ["Claude"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["no.dodsfjellet.Dodsfjellet"],
+    "client": ["no.dodsfjellet.client.DodsfjelletClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": [
+    "dodsfjellet:dodsgrotta"
+  ],
+  "step": "underground_structures",
+  "spawn_overrides": {},
+  "start_pool": "dodsfjellet:dodsgrotta",
+  "size": 1,
+  "max_distance_from_center": 80,
+  "use_expansion_hack": false,
+  "terrain_adaptation": "none",
+  "start_height": {
+    "type": "minecraft:uniform",
+    "min_inclusive": {
+      "absolute": -40
+    },
+    "max_inclusive": {
+      "absolute": 10
+    }
+  }
+}

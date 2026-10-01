@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "k": "dodsfjellet:dodskrystall",
+    "b": "minecraft:bone",
+    "g": "minecraft:gold_ingot"
+  },
+  "pattern": [
+    "kgk",
+    " b ",
+    " b "
+  ],
+  "result": {
+    "id": "dodsfjellet:dodsnokkel"
+  }
+}

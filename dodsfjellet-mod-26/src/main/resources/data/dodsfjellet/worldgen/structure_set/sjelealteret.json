@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 31337001,
+    "spacing": 18,
+    "separation": 6
+  },
+  "structures": [
+    {
+      "structure": "dodsfjellet:sjelealteret",
+      "weight": 1
+    }
+  ]
+}

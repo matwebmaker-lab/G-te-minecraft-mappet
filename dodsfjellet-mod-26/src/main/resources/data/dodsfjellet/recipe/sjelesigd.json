@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "k": "dodsfjellet:dodskrystall",
+    "v": "minecraft:netherite_hoe",
+    "s": "dodsfjellet:sjeleglod"
+  },
+  "pattern": [
+    "ksk",
+    "kvk",
+    "ksk"
+  ],
+  "result": {
+    "id": "dodsfjellet:sjelesigd"
+  }
+}

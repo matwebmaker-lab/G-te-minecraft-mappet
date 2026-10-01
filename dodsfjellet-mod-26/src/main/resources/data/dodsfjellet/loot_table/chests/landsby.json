@@ -1,0 +1,165 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 3,
+        "max": 6
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:dodskrystall",
+          "weight": 30,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_apple",
+          "weight": 10,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bread",
+          "weight": 15,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_ingot",
+          "weight": 12,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "weight": 4,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:reisekompass",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:dodsnokkel",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:arrow",
+          "weight": 10,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 6,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_skyggesprang",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_sjeleskjold",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_dodsnova",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_blodhost",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_andesprang",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_vokterkall",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjeleplate_hjelm",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjeleplate_brynje",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjeleplate_bukser",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjeleplate_stovler",
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "random_sequence": "dodsfjellet:chests/landsby"
+}

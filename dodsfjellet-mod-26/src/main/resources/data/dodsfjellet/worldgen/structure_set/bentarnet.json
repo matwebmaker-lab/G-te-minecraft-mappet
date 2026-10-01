@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 51234987,
+    "spacing": 30,
+    "separation": 10
+  },
+  "structures": [
+    {
+      "structure": "dodsfjellet:bentarnet",
+      "weight": 1
+    }
+  ]
+}

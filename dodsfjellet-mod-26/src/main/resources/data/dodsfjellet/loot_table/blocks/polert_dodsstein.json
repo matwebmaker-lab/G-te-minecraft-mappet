@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "dodsfjellet:blocks/polert_dodsstein",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:polert_dodsstein"
+        }
+      ]
+    }
+  ]
+}

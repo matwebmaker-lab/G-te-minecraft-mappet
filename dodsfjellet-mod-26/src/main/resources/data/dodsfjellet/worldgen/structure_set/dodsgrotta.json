@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 88213311,
+    "spacing": 24,
+    "separation": 8
+  },
+  "structures": [
+    {
+      "structure": "dodsfjellet:dodsgrotta",
+      "weight": 1
+    }
+  ]
+}

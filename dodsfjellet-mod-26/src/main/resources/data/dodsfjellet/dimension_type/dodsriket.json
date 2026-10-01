@@ -1,0 +1,53 @@
+{
+  "has_fixed_time": true,
+  "has_skylight": true,
+  "has_ceiling": false,
+  "has_ender_dragon_fight": false,
+  "coordinate_scale": 1.0,
+  "min_y": -64,
+  "height": 384,
+  "logical_height": 384,
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "ambient_light": 0.14,
+  "monster_spawn_light_level": {
+    "type": "minecraft:uniform",
+    "min_inclusive": 0,
+    "max_inclusive": 7
+  },
+  "monster_spawn_block_light_limit": 0,
+  "skybox": "overworld",
+  "cardinal_light": "default",
+  "timelines": [],
+  "attributes": {
+    "minecraft:visual/sky_color": "#3a1f55",
+    "minecraft:visual/fog_color": "#4a2a5e",
+    "minecraft:visual/fog_start_distance": 6.0,
+    "minecraft:visual/fog_end_distance": 150.0,
+    "minecraft:visual/sky_fog_end_distance": 140.0,
+    "minecraft:visual/sun_angle": 92.0,
+    "minecraft:visual/moon_angle": 300.0,
+    "minecraft:visual/moon_phase": "full_moon",
+    "minecraft:visual/sunrise_sunset_color": "#aab0204e",
+    "minecraft:visual/star_brightness": 0.45,
+    "minecraft:visual/sky_light_color": "#8a5cc2",
+    "minecraft:visual/sky_light_factor": 0.7,
+    "minecraft:visual/ambient_light_color": "#241430",
+    "minecraft:visual/block_light_tint": "#ffd0f0",
+    "minecraft:gameplay/sky_light_level": 10.0,
+    "minecraft:audio/background_music": {
+      "default": {
+        "sound": "minecraft:music.nether.soul_sand_valley",
+        "min_delay": 6000,
+        "max_delay": 18000
+      }
+    },
+    "minecraft:gameplay/bed_rule": {
+      "can_set_spawn": "never",
+      "can_sleep": "never",
+      "destroy_on_use": true
+    },
+    "minecraft:gameplay/respawn_anchor_works": true,
+    "minecraft:gameplay/can_start_raid": false,
+    "minecraft:gameplay/monsters_burn": false
+  }
+}

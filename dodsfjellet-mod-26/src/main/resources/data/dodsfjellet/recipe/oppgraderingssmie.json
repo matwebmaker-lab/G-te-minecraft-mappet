@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "dodsfjellet:dodsstein_murstein",
+    "k": "dodsfjellet:dodskrystall",
+    "a": "minecraft:anvil"
+  },
+  "pattern": [
+    "kkk",
+    "#a#",
+    "###"
+  ],
+  "result": {
+    "id": "dodsfjellet:oppgraderingssmie"
+  }
+}

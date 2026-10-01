@@ -1,0 +1,58 @@
+# --- Gradle / Java / Loom
+.gradle/
+build/
+out/
+bin/
+classes/
+*.class
+**/run/
+remappedSrc/
+.loom-cache/
+
+# Gradle-wrapperen skal være med, ellers ikke jar-filer
+*.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+
+# --- IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+*.launch
+
+# --- Python
+__pycache__/
+*.pyc
+.venv/
+
+# --- Generert innhold (lages på nytt av generatorene)
+dodstrappa/
+dodstrappa_1.21.1/
+dodsfjellet_1.21.1/
+dodsfjellet_26/
+dodstrappa_26/
+pvp_26/
+*.zip
+
+# --- Minecraft-verdener, logger og krasjrapporter
+saves/
+logs/
+crash-reports/
+world/
+session.lock
+
+# --- Blender-backup
+*.blend1
+*.blend2
+
+# --- OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- Claude Code lokale filer
+.claude/

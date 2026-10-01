@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "dodsfjellet",
+  "version": "${version}",
+  "name": "Dødsfjellet",
+  "description": "Vakter som oppfører seg som spillere, og våpen og rustning du vinner ved å løse gåtene i Dødsfjellet.",
+  "authors": ["Claude"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["no.dodsfjellet.Dodsfjellet"],
+    "client": ["no.dodsfjellet.client.DodsfjelletClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

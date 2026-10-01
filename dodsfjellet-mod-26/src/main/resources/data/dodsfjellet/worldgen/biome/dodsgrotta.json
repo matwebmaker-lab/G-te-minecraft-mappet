@@ -1,0 +1,85 @@
+{
+  "has_precipitation": false,
+  "temperature": 1.2,
+  "downfall": 0.0,
+  "attributes": {
+    "minecraft:visual/fog_color": "#120a18",
+    "minecraft:visual/sky_color": "#0a0610",
+    "minecraft:visual/water_fog_color": "#1a0a20",
+    "minecraft:visual/ambient_particles": {
+      "modifier": "append",
+      "argument": [
+        {
+          "particle": {
+            "type": "minecraft:soul"
+          },
+          "probability": 0.004
+        }
+      ]
+    },
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.soul_sand_valley.mood",
+        "tick_delay": 6000
+      },
+      "additions": {
+        "sound": "minecraft:ambient.soul_sand_valley.additions",
+        "tick_chance": 0.0111
+      }
+    },
+    "minecraft:gameplay/natural_mob_spawns": {
+      "modifier": "overlay",
+      "argument": {
+        "spawn_costs": {},
+        "spawns_by_category": {
+          "monster": [
+            {
+              "type": "minecraft:skeleton",
+              "count": 3,
+              "weight": 50
+            },
+            {
+              "type": "minecraft:cave_spider",
+              "count": 2,
+              "weight": 30
+            },
+            {
+              "type": "dodsfjellet:vakt",
+              "count": 1,
+              "weight": 10
+            }
+          ]
+        }
+      }
+    }
+  },
+  "effects": {
+    "water_color": "#1a0a20",
+    "grass_color": "#2a1a2a",
+    "foliage_color": "#2a1a2a"
+  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "dodsfjellet:dodskrystall_malm"
+    ],
+    [],
+    [],
+    [
+      "dodsfjellet:sjelekrystaller_spredt"
+    ],
+    []
+  ]
+}

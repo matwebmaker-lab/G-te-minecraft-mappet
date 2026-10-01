@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "k": "dodsfjellet:dodskrystall",
+    "c": "minecraft:compass"
+  },
+  "pattern": [
+    " k ",
+    "kck",
+    " k "
+  ],
+  "result": {
+    "id": "dodsfjellet:reisekompass"
+  }
+}

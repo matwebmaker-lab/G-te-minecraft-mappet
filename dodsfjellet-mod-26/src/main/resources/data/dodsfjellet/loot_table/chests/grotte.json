@@ -1,0 +1,110 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 4,
+        "max": 7
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:dodskrystall",
+          "weight": 25,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_golden_apple",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "weight": 8,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjelesigd",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:dodsklinge",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_skyggesprang",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_sjeleskjold",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_dodsnova",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_blodhost",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_andesprang",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:rune_vokterkall",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjeleplate_hjelm",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjeleplate_brynje",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjeleplate_bukser",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:sjeleplate_stovler",
+          "weight": 4
+        }
+      ]
+    }
+  ],
+  "random_sequence": "dodsfjellet:chests/grotte"
+}

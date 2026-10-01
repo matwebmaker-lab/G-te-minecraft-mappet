@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "dodsfjellet:dodskrystall",
+    "s": "minecraft:soul_sand"
+  },
+  "pattern": [
+    "#s#",
+    "s#s",
+    "#s#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "dodsfjellet:sjeleglod"
+  }
+}

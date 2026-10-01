@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "dodsfjellet:block/oppgraderingssmie_topp",
+    "bottom": "dodsfjellet:block/oppgraderingssmie_bunn",
+    "side": "dodsfjellet:block/oppgraderingssmie_side"
+  }
+}

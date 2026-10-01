@@ -1,0 +1,14 @@
+DØDSFJELLET - Minecraft 1.21.1 (Fabric)
+=======================================
+1. Lag en Minecraft 1.21.1-instans med Fabric (CurseForge: Create Custom Profile -> 1.21.1 -> Fabric).
+2. Legg til Fabric API og Essential Mod i instansen.
+3. Kopier alt i mappa "mods" herfra inn i instansens mods-mappe (dodsfjellet-1.0.0.jar).
+4. Kopier mappa "saves\Dodstrappa" inn i instansens saves-mappe.
+5. Start spillet -> Singleplayer -> Dødstrappa.
+
+Vennene dine trenger BARE steg 1-3 (modden), ikke verdenen.
+
+Kommandoer for verten:
+  /function df:hjelp    - hjelp
+  /function df:admin    - kontrollrommet der du følger med på spillerne
+  /function df:fasit    - teleporter og løsninger (ikke vis vennene!)

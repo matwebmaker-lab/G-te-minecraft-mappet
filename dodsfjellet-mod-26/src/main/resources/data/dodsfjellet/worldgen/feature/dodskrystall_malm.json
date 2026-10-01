@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:ore",
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 7,
+  "targets": [
+    {
+      "state": "dodsfjellet:dodskrystall_malm",
+      "target": {
+        "predicate_type": "minecraft:block_match",
+        "block": "dodsfjellet:dodsstein"
+      }
+    },
+    {
+      "state": "dodsfjellet:dodskrystall_malm",
+      "target": {
+        "predicate_type": "minecraft:block_match",
+        "block": "minecraft:deepslate"
+      }
+    }
+  ]
+}
