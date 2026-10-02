@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "g": "minecraft:gunpowder",
+    "k": "dodsfjellet:dodskrystall"
+  },
+  "pattern": [
+    "iii",
+    " gk",
+    "  i"
+  ],
+  "result": {
+    "id": "dodsfjellet:pistol"
+  }
+}

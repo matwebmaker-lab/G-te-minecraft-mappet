@@ -50,7 +50,31 @@ def blokker():
     skriv(A / "models" / "block" / f"{o}.json", {"parent": "minecraft:block/cube_bottom_top", "textures": {
         "top": m(f"block/{o}_topp"), "bottom": m(f"block/{o}_bunn"), "side": m(f"block/{o}_side")}})
 
-    alle = ENKLE + [s, o]
+    # lyskorset: loddrett bjelke + tverrbjelke med lysende kjerne, dreid etter retningen
+    k = "lyskors"
+    skriv(A / "blockstates" / f"{k}.json", {"variants": {
+        f"facing={f}": {"model": m(f"block/{k}"), "y": y} for f, y in (("north", 0), ("east", 90), ("south", 180), ("west", 270))}})
+    gull, kjerne = "#g", "#k"
+
+    def el(fra, til, t, lys=0):
+        e = {"from": fra, "to": til, "faces": {f: {"texture": t} for f in ("north", "south", "east", "west", "up", "down")}}
+        if lys:
+            e["light_emission"] = lys
+        return e
+    skriv(A / "models" / "block" / f"{k}.json", {
+        "parent": "minecraft:block/block", "ambientocclusion": False,
+        "textures": {"g": m(f"block/{k}"), "k": m(f"block/{k}_kjerne"), "particle": m(f"block/{k}")},
+        "elements": [el([6.5, 0, 6.5], [9.5, 2, 9.5], gull), el([7, 2, 7], [9, 16, 9], gull),
+                     el([3, 10, 7], [13, 12, 9], gull), el([7.4, 2.5, 6.9], [8.6, 15.5, 9.1], kjerne, 15),
+                     el([3.5, 10.4, 6.9], [12.5, 11.6, 9.1], kjerne, 15)],
+        "display": {"gui": {"rotation": [30, 225, 0], "translation": [0, 0, 0], "scale": [0.8, 0.8, 0.8]},
+                    "ground": {"rotation": [0, 0, 0], "translation": [0, 3, 0], "scale": [0.5, 0.5, 0.5]},
+                    "fixed": {"rotation": [0, 0, 0], "translation": [0, 0, 0], "scale": [0.8, 0.8, 0.8]},
+                    "thirdperson_righthand": {"rotation": [75, 45, 0], "translation": [0, 2.5, 0], "scale": [0.375, 0.375, 0.375]},
+                    "firstperson_righthand": {"rotation": [0, 45, 0], "translation": [0, 0, 0], "scale": [0.4, 0.4, 0.4]},
+                    "firstperson_lefthand": {"rotation": [0, 225, 0], "translation": [0, 0, 0], "scale": [0.4, 0.4, 0.4]}}})
+
+    alle = ENKLE + [s, o, k]
     for b in alle:
         skriv(A / "items" / f"{b}.json", {"model": {"type": "minecraft:model", "model": m(f"block/{b}")}})
         # loot: dropper seg selv, unntatt malmen
@@ -69,7 +93,7 @@ def blokker():
                 "entries": [{"type": "minecraft:item", "name": m(b)}]}]}
         skriv(D / "loot_table" / "blocks" / f"{b}.json", loot)
 
-    stein = ["dodsstein", "dodsstein_murstein", "polert_dodsstein", "dodskrystall_malm", "oppgraderingssmie", "sjeleglod"]
+    stein = ["dodsstein", "dodsstein_murstein", "polert_dodsstein", "dodskrystall_malm", "oppgraderingssmie", "sjeleglod", "lyskors"]
     skriv(MC / "tags" / "block" / "mineable" / "pickaxe.json", {"replace": False, "values": [m(b) for b in stein]})
     skriv(MC / "tags" / "block" / "mineable" / "axe.json", {"replace": False, "values": [m("dodsved_stamme"), m("dodsved_planker")]})
     skriv(MC / "tags" / "block" / "mineable" / "shovel.json", {"replace": False, "values": [m("askejord"), m("blodmose")]})
@@ -77,6 +101,11 @@ def blokker():
     for tag in ("overworld_carver_replaceables", "nether_carver_replaceables"):
         skriv(MC / "tags" / "block" / f"{tag}.json", {"replace": False, "values": [m("dodsstein"), m("askejord"), m("blodmose")]})
     skriv(D / "tags" / "item" / "dodskrystall_reparasjon.json", {"values": [m("dodskrystall")]})
+    # skadetypen til geværene (eget tilbakeslag i GevaerItem, så ingen vanlig knockback)
+    skriv(D / "damage_type" / "skudd.json", {"message_id": "dodsfjellet.skudd", "scaling": "when_caused_by_living_non_player",
+                                             "exhaustion": 0.1})
+    skriv(MC / "tags" / "damage_type" / "no_knockback.json", {"replace": False, "values": [m("skudd")]})
+    skriv(MC / "tags" / "damage_type" / "is_projectile.json", {"replace": False, "values": [m("skudd")]})
 
 
 # =========================================================================== gjenstander
@@ -84,6 +113,8 @@ FLATE = ["dodskrystall", "dodsnokkel", "reisekompass", "vakt_spawn_egg",
          "rune_skyggesprang", "rune_sjeleskjold", "rune_dodsnova", "rune_blodhost", "rune_andesprang", "rune_vokterkall"]
 RUSTNING = [f"{sett}_{d}" for sett in ("fjellvokter", "sjeleplate") for d in ("hjelm", "brynje", "bukser", "stovler")]
 VAAPEN_3D = ["sjelesigd", "dodsklinge", "vokterknuser"]
+GEVAER = ["pistol", "hagle", "automatgevaer", "snikskyttergevaer"]   # 3D-modeller fra gevaer3d.py
+FLATE += ["kuler", "haglpatroner", "bibel"]
 
 
 def gjenstander():
@@ -92,7 +123,7 @@ def gjenstander():
         skriv(A / "items" / f"{i}.json", {"model": {"type": "minecraft:model", "model": m(f"item/{i}")}})
     skriv(A / "models" / "item" / "skyggedolk.json", {"parent": "minecraft:item/handheld", "textures": {"layer0": m("item/skyggedolk")}})
     skriv(A / "items" / "skyggedolk.json", {"model": {"type": "minecraft:model", "model": m("item/skyggedolk")}})
-    for v in VAAPEN_3D:
+    for v in VAAPEN_3D + GEVAER:
         # 2D-ikonet (rendret i Blender) i inventaret, 3D-modellen i hånda
         skriv(A / "models" / "item" / f"{v}.json", {"parent": "minecraft:item/generated", "textures": {"layer0": m(f"item/{v}")}})
         skriv(A / "items" / f"{v}.json", {"model": {
@@ -138,6 +169,28 @@ SPRAAK = {
     "item.dodsfjellet.rune_andesprang": "Rune: Åndesprang",
     "item.dodsfjellet.rune_vokterkall": "Rune: Vokterkall",
     "item.dodsfjellet.vakt_spawn_egg": "Vakt-egg",
+    "item.dodsfjellet.bibel": "Bibelen",
+    "block.dodsfjellet.lyskors": "Lyskors",
+    "effect.dodsfjellet.glede": "Glede",
+    "item.dodsfjellet.pistol": "Pistol",
+    "item.dodsfjellet.hagle": "Pumpehagle",
+    "item.dodsfjellet.automatgevaer": "Automatgevær",
+    "item.dodsfjellet.snikskyttergevaer": "Snikskyttergevær",
+    "item.dodsfjellet.kuler": "Kuler",
+    "item.dodsfjellet.haglpatroner": "Haglpatroner",
+    "death.attack.dodsfjellet.skudd": "%1$s ble skutt",
+    "death.attack.dodsfjellet.skudd.player": "%1$s ble skutt av %2$s",
+    "death.attack.dodsfjellet.skudd.item": "%1$s ble skutt av %2$s med %3$s",
+    "subtitles.dodsfjellet.gevaer.pistol_skudd": "Pistolskudd",
+    "subtitles.dodsfjellet.gevaer.hagle_skudd": "Haglskudd",
+    "subtitles.dodsfjellet.gevaer.automatgevaer_skudd": "Automatild",
+    "subtitles.dodsfjellet.gevaer.snikskyttergevaer_skudd": "Snikskytterskudd",
+    "subtitles.dodsfjellet.gevaer.tom": "Tomt magasin",
+    "subtitles.dodsfjellet.gevaer.omlad_pistol": "Lader om",
+    "subtitles.dodsfjellet.gevaer.omlad_automat": "Lader om",
+    "subtitles.dodsfjellet.gevaer.omlad_hagle": "Pumper",
+    "subtitles.dodsfjellet.gevaer.omlad_snikskytter": "Bolt",
+    "subtitles.dodsfjellet.gevaer.pumpe": "Pumper",
     "entity.dodsfjellet.vakt": "Vakt",
     "effect.dodsfjellet.blodhost": "Blodhøst",
     "biome.dodsfjellet.askeodet": "Askeødet",
@@ -182,6 +235,28 @@ def oppskrifter():
             skriv(r / f"{sett}_{del_}.json", {"type": "minecraft:crafting_shaped", "category": "equipment",
                                              "key": {"k": m("dodskrystall"), "K": kjerne}, "pattern": monster,
                                              "result": {"id": m(f"{sett}_{del_}")}})
+    # glede
+    skriv(r / "bibel.json", {"type": "minecraft:crafting_shapeless", "category": "misc",
+                             "ingredients": ["minecraft:book", "minecraft:gold_ingot"], "result": {"id": m("bibel")}})
+    skriv(r / "lyskors.json", {"type": "minecraft:crafting_shaped", "category": "building",
+                               "key": {"g": "minecraft:gold_ingot", "l": "minecraft:glowstone_dust"},
+                               "pattern": [" g ", "glg", " g "], "result": {"count": 2, "id": m("lyskors")}})
+    # gevær og ammunisjon
+    skriv(r / "kuler.json", {"type": "minecraft:crafting_shapeless", "category": "equipment",
+                             "ingredients": ["minecraft:copper_ingot", "minecraft:gunpowder", "minecraft:iron_nugget"],
+                             "result": {"count": 16, "id": m("kuler")}})
+    skriv(r / "haglpatroner.json", {"type": "minecraft:crafting_shapeless", "category": "equipment",
+                                    "ingredients": ["minecraft:paper", "minecraft:gunpowder", "minecraft:iron_nugget", "minecraft:copper_ingot"],
+                                    "result": {"count": 8, "id": m("haglpatroner")}})
+    for v, monster, key in (
+            ("pistol", ["iii", " gk", "  i"], {"i": "minecraft:iron_ingot", "g": "minecraft:gunpowder", "k": m("dodskrystall")}),
+            ("hagle", ["iii", "  t", "  w"], {"i": "minecraft:iron_ingot", "t": "minecraft:tripwire_hook", "w": "#minecraft:planks"}),
+            ("automatgevaer", ["iii", "kgt", " iw"], {"i": "minecraft:iron_ingot", "g": "minecraft:gunpowder", "k": m("dodskrystall"),
+                                                      "t": "minecraft:tripwire_hook", "w": "#minecraft:planks"}),
+            ("snikskyttergevaer", ["ssi", "iki", "ddi"], {"i": "minecraft:iron_ingot", "s": "minecraft:spyglass", "k": m("dodskrystall"),
+                                                          "d": "minecraft:diamond"})):
+        skriv(r / f"{v}.json", {"type": "minecraft:crafting_shaped", "category": "equipment", "key": key, "pattern": monster,
+                                "result": {"id": m(v)}})
     for v, kjerne in (("sjelesigd", "minecraft:netherite_hoe"), ("dodsklinge", "minecraft:netherite_sword")):
         skriv(r / f"{v}.json", {"type": "minecraft:crafting_shaped", "category": "equipment",
                                 "key": {"k": m("dodskrystall"), "v": kjerne, "s": m("sjeleglod")},

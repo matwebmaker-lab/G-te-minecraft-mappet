@@ -1,0 +1,70 @@
+{
+ "gevaer.pistol_skudd": {
+  "sounds": [
+   "dodsfjellet:gevaer/pistol_skudd_0",
+   "dodsfjellet:gevaer/pistol_skudd_1",
+   "dodsfjellet:gevaer/pistol_skudd_2"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.pistol_skudd"
+ },
+ "gevaer.hagle_skudd": {
+  "sounds": [
+   "dodsfjellet:gevaer/hagle_skudd_0",
+   "dodsfjellet:gevaer/hagle_skudd_1",
+   "dodsfjellet:gevaer/hagle_skudd_2"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.hagle_skudd"
+ },
+ "gevaer.automatgevaer_skudd": {
+  "sounds": [
+   "dodsfjellet:gevaer/automatgevaer_skudd_0",
+   "dodsfjellet:gevaer/automatgevaer_skudd_1",
+   "dodsfjellet:gevaer/automatgevaer_skudd_2",
+   "dodsfjellet:gevaer/automatgevaer_skudd_3"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.automatgevaer_skudd"
+ },
+ "gevaer.snikskyttergevaer_skudd": {
+  "sounds": [
+   "dodsfjellet:gevaer/snikskyttergevaer_skudd_0",
+   "dodsfjellet:gevaer/snikskyttergevaer_skudd_1"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.snikskyttergevaer_skudd"
+ },
+ "gevaer.tom": {
+  "sounds": [
+   "dodsfjellet:gevaer/tom_0"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.tom"
+ },
+ "gevaer.omlad_pistol": {
+  "sounds": [
+   "dodsfjellet:gevaer/omlad_pistol_0"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.omlad_pistol"
+ },
+ "gevaer.omlad_automat": {
+  "sounds": [
+   "dodsfjellet:gevaer/omlad_automat_0"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.omlad_automat"
+ },
+ "gevaer.omlad_hagle": {
+  "sounds": [
+   "dodsfjellet:gevaer/omlad_hagle_0"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.omlad_hagle"
+ },
+ "gevaer.omlad_snikskytter": {
+  "sounds": [
+   "dodsfjellet:gevaer/omlad_snikskytter_0"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.omlad_snikskytter"
+ },
+ "gevaer.pumpe": {
+  "sounds": [
+   "dodsfjellet:gevaer/pumpe_0"
+  ],
+  "subtitle": "subtitles.dodsfjellet.gevaer.pumpe"
+ }
+}

@@ -46,15 +46,18 @@ import java.util.UUID;
  */
 public class VaktEntity extends Monster implements RangedAttackMob {
     private static final String[] NAVN = {
-            "xX_Slayer_Xx", "PvP_Ola", "NoobKiller99", "Kari_Gamer", "EnderJonas", "SweatyTryhard",
-            "BlokkMester", "DiamondDidrik", "Sigurd_PvP", "Emma_Builds", "CreeperKongen", "Nordlys_Nils",
-            "TryhardTobias", "IngridIsTheBest", "LagMasterX", "Fjellulven", "Kristian2012", "GG_Gunnar",
-            "Ninja_Nora", "MLG_Magnus", "Bueskytter_Bjorn", "ThorHammer07", "SkattJeger", "Viking_Vilde"};
-    private static final String[] HEI = {"lol en til", "kom igjen da", "1v1 meg", "du er ferdig", "jeg ser deg :)",
-            "hehe", "trodde du kunne snike deg forbi?", "skatten er MIN", "go go go", "ez kill incoming"};
-    private static final String[] DREPT = {"ez", "gg ez", "L", "for lett", "get good", "rip", "noob lol", "gg"};
-    private static final String[] DOD = {"gg", "lag!!", "hacker", "wtf", "ok du er god", "neiii", "min wifi..."};
-    private static final String[] SPISER = {"gapple time", "brb healer", "nam nam"};
+            "Glade_Ola", "Kari_Bygger", "EnderJonas", "Sol_Sigrid", "BlokkMester", "DiamondDidrik",
+            "Venne_Vilde", "Emma_Builds", "Nordlys_Nils", "Hjelpsomme_Henrik", "IngridIsTheBest", "Fjellvandrer",
+            "Kristian2012", "Gode_Gunnar", "Ninja_Nora", "MLG_Magnus", "Bueskytter_Bjorn", "Lys_Lukas",
+            "Skattejeger", "Viking_Vilde", "Snille_Sara", "Josef_Bygger", "Modige_Daniel", "Ester_Sterk"};
+    private static final String[] HEI = {"Hei! Klar for en vennlig kamp?", "Lykke til!", "Jeg vokter skatten – vis hva du kan!",
+            "God dag, vandrer!", "Fred være med deg!", "Du er modig som David!", "Kom igjen, vi tar det med et smil!",
+            "Skal vi se hvem som vinner?", "Velkommen! Dette blir gøy!", "Ha en velsignet dag!"};
+    private static final String[] DREPT = {"gg! Godt forsøkt!", "Du klarer det neste gang!", "Reis deg igjen – du er sterkere enn du tror!",
+            "Bra kjempet!", "Aldri gi opp!", "gg, prøv igjen!"};
+    private static final String[] DOD = {"gg, du var flink!", "Godt spilt!", "Du vant – gratulerer!", "Wow, imponerende!",
+            "Velsignet seier til deg!", "Neste gang tar jeg deg! :)"};
+    private static final String[] SPISER = {"Matpause!", "Nam nam, eple!", "Takk for maten!"};
 
     private final RangedBowAttackGoal<VaktEntity> bueMaal = new RangedBowAttackGoal<>(this, 1.0, 20, 15.0f);
     private final MeleeAttackGoal naerMaal = new MeleeAttackGoal(this, 1.25, true);

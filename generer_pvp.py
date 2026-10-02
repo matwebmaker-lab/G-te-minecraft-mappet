@@ -105,6 +105,9 @@ KITS = {
     "dodsrike": KIT_START + [gi("dodsfjellet:sjelesigd"), gi("dodsfjellet:dodsklinge"), gi("dodsfjellet:rune_skyggesprang"),
                              gi("dodsfjellet:rune_dodsnova"), gi("dodsfjellet:rune_sjeleskjold")]
                 + [gi(f"dodsfjellet:sjeleplate_{d}") for d in ("hjelm", "brynje", "bukser", "stovler")] + [gi("minecraft:golden_apple", 6)],
+    "gevaer": KIT_START + [gi("dodsfjellet:automatgevaer"), gi("dodsfjellet:pistol"), gi("dodsfjellet:hagle"),
+                           gi("dodsfjellet:snikskyttergevaer"), gi("dodsfjellet:kuler", 64), gi("dodsfjellet:kuler", 64),
+                           gi("dodsfjellet:haglpatroner", 32)] + DIA_RUST + [gi("minecraft:golden_apple", 4)],
 }
 for navn, cmds in KITS.items():
     filer[f"kit/{navn}"] = cmds + [f'title @s actionbar {{text:"Kit: {navn}",color:"gold"}}',
@@ -141,7 +144,7 @@ for (x, z) in [(94, -6), (106, 6), (94, 6), (106, -6)]:      # dekning
     fill(x, Y + 1, z, x + 1, Y + 3, z + 1, STEIN)
 tekst(100.5, Y + 8, 0.5, "DUELL-ARENA", "gold", 2.0)
 for side, z, facing in (("A", -15, "south"), ("B", 15, "north")):
-    for i, kit in enumerate(["sverd", "oks", "bue", "mace", "pot", "dodsrike"]):
+    for i, kit in enumerate(["sverd", "oks", "bue", "mace", "pot", "dodsrike", "gevaer"]):
         knapp(95 + i * 2, Y + 2, z, facing, kit.capitalize(), f"kit/{kit}")
 tilbake(100, -12)
 tilbake(100, 12)
@@ -303,14 +306,10 @@ tick.append("tag @a remove pvp_ffa_inne")
 tilbake(700, 18)
 
 # =========================================================================== fall i tomrommet
-filer["fall"] = [
-    f"execute if entity @s[x=380,y=0,z=-40,dx=90,dy=100,dz=80] run function {NS}:fall_bridge",
-    f"execute if entity @s[x=590,y=0,z=-40,dx=120,dy=100,dz=80] run function {NS}:parkour/tilbake",
-    f"execute unless entity @s[x=380,y=0,z=-40,dx=90,dy=100,dz=80] unless entity @s[x=590,y=0,z=-40,dx=120,dy=100,dz=80] "
-    f"run scoreboard players set @s df_reise 3",
+filer["fall"] = [   # faller du i tomrommet dør du med en gang, og modden sender deg tilbake til huben der du velger på nytt
+    "tag @s remove pvp_bridge", "tag @s remove pvp_ffa",
+    "damage @s 1000 minecraft:out_of_world",
 ]
-filer["fall_bridge"] = ["tag @s remove pvp_bridge", "tp @s 400.5 101 0.5 -90 0",
-                        'title @s actionbar {text:"Du falt! Trykk Start for å prøve igjen.",color:"red"}']
 
 # =========================================================================== funksjoner
 OMRADE = [("-32", "-32", "360", "32"), ("361", "-32", "740", "32")]
@@ -321,7 +320,7 @@ FUNKSJONER = {
     "tick": ["scoreboard players add #klokke pvp_t 1",
              "execute if score #klokke pvp_t matches 100.. run scoreboard players set #klokke pvp_t 0",
              f"execute in {DIM} run function {NS}:tick_pvp"],
-    "tick_pvp": tick + [f"execute as @a[distance=0..,y=-64,dy=124] run function {NS}:fall"],
+    "tick_pvp": tick + [f"execute as @a[distance=0..,y=-128,dy=213,gamemode=!spectator,gamemode=!creative] run function {NS}:fall"],
     "bygg": [f"execute in {DIM} run forceload add {a} {b} {c} {d}" for a, b, c, d in OMRADE]
             + ['tellraw @a {text:"[PvP-øya] Laster og bygger øvingsverdenen...",color:"gray"}', f"function {NS}:bygg_vent"],
     "bygg_vent": [f"execute if function {NS}:lastet run function {NS}:bygg_kjor",

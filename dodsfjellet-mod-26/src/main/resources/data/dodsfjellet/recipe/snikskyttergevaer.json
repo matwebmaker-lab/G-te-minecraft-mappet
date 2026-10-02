@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "s": "minecraft:spyglass",
+    "k": "dodsfjellet:dodskrystall",
+    "d": "minecraft:diamond"
+  },
+  "pattern": [
+    "ssi",
+    "iki",
+    "ddi"
+  ],
+  "result": {
+    "id": "dodsfjellet:snikskyttergevaer"
+  }
+}

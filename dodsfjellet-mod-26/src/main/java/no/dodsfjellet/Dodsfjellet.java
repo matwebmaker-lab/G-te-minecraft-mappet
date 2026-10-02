@@ -34,6 +34,7 @@ public class Dodsfjellet implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ModLyder.register();
         ModBlokker.register();
         ModEntiteter.register();
         ModGjenstander.register();
@@ -58,6 +59,12 @@ public class Dodsfjellet implements ModInitializer {
                 p.sendSystemMessage(Component.literal("Du fikk et Reisekompass! Høyreklikk det (eller skriv /reise) for å reise.")
                         .withStyle(ChatFormatting.LIGHT_PURPLE));
             }
+            // alle (også de som har spilt før) får Bibelen én gang
+            if (p.addTag("df_bibel")) {
+                p.getInventory().add(new ItemStack(ModGjenstander.BIBEL));
+                p.sendSystemMessage(Component.literal("Du fikk Bibelen! Høyreklikk den for å lese et vers og dele glede med vennene dine.")
+                        .withStyle(ChatFormatting.GOLD));
+            }
         });
 
         ServerTickEvents.END_SERVER_TICK.register(server -> {
@@ -71,7 +78,7 @@ public class Dodsfjellet implements ModInitializer {
             if (!(offer.level() instanceof ServerLevel sl)) return;
             float heling = 0;
             if (angriper.hasEffect(ModGjenstander.BLODHOST)) heling += skade * 0.4f;
-            int vaapenNivaa = OppgraderingssmieBlock.nivaa(angriper.getMainHandItem());
+            int vaapenNivaa = OppgraderingssmieBlock.naerkampNivaa(angriper.getMainHandItem());   // ikke hakker, buer og gevær
             if (vaapenNivaa >= 5) heling += skade * 0.15f;
             if (heling > 0) angriper.heal(heling);
             if (vaapenNivaa >= 10 && kilde.getDirectEntity() == angriper) {
@@ -89,6 +96,7 @@ public class Dodsfjellet implements ModInitializer {
         // Udødelighet: full rustning med sum +40 redder deg fra døden én gang hvert 5. minutt
         ServerLivingEntityEvents.ALLOW_DEATH.register((offer, kilde, skade) -> {
             if (!(offer instanceof ServerPlayer p) || rustningSum(p) < 40) return true;
+            if (kilde.is(net.minecraft.tags.DamageTypeTags.BYPASSES_INVULNERABILITY)) return true;   // tomrommet tar deg uansett
             long naa = p.level().getGameTime();
             Long sist = UDODELIG_NEDKJOLING.get(p.getUUID());
             if (sist != null && naa - sist < 6000) return true;

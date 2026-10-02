@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "t": "minecraft:tripwire_hook",
+    "w": "#minecraft:planks"
+  },
+  "pattern": [
+    "iii",
+    "  t",
+    "  w"
+  ],
+  "result": {
+    "id": "dodsfjellet:hagle"
+  }
+}

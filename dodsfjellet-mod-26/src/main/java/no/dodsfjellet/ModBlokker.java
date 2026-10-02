@@ -33,6 +33,8 @@ public final class ModBlokker {
             .mapColor(MapColor.COLOR_LIGHT_BLUE).strength(0.4f).sound(SoundType.AMETHYST).lightLevel(s -> 15));
     public static final Block DODSKRYSTALL_MALM = Reg.blokk("dodskrystall_malm", Block::new,
             stein(3.0f).lightLevel(s -> 6));
+    public static final Block LYSKORS = Reg.blokk("lyskors", LyskorsBlock::new, BlockBehaviour.Properties.of()
+            .mapColor(MapColor.GOLD).strength(1.5f).sound(SoundType.METAL).lightLevel(s -> 15).noOcclusion());
     public static final Block OPPGRADERINGSSMIE = Reg.blokk("oppgraderingssmie", OppgraderingssmieBlock::new,
             stein(5.0f).lightLevel(s -> 10));
 

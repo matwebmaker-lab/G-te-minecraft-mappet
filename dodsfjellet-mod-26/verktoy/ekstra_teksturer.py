@@ -2,7 +2,7 @@
 import colorsys
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageFilter
 
 HER = Path(__file__).resolve().parent.parent
 TEX = HER / "src" / "main" / "resources" / "assets" / "dodsfjellet" / "textures"
@@ -66,6 +66,14 @@ def main():
         kilde = IKONER / f"ikon32_{navn}.png"
         if kilde.exists():
             metning(Image.open(kilde), 1.6).save(TEX / "item" / f"{navn}.png")
+    for navn in ("pistol", "hagle", "automatgevaer", "snikskyttergevaer", "kuler", "haglpatroner"):   # realistiske gevær: 64x64 fra 512-renderet
+        kilde = IKONER / f"ikon_{navn}.png"
+        if kilde.exists():
+            ikon = Image.open(kilde).convert("RGBA").resize((64, 64), Image.LANCZOS)
+            ikon = ikon.filter(ImageFilter.UnsharpMask(radius=1, percent=60, threshold=2))
+            a_ = ikon.getchannel("A").point(lambda v: 255 if v > 90 else 0)
+            ikon.putalpha(a_)
+            ikon.save(TEX / "item" / f"{navn}.png")
     print("Ekstra teksturer laget")
 
 

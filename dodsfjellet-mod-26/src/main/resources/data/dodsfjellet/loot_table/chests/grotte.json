@@ -55,6 +55,31 @@
         },
         {
           "type": "minecraft:item",
+          "name": "dodsfjellet:automatgevaer",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:snikskyttergevaer",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:kuler",
+          "weight": 10,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 16,
+                "max": 40
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "dodsfjellet:rune_skyggesprang",
           "weight": 5
         },

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "g": "minecraft:gunpowder",
+    "k": "dodsfjellet:dodskrystall",
+    "t": "minecraft:tripwire_hook",
+    "w": "#minecraft:planks"
+  },
+  "pattern": [
+    "iii",
+    "kgt",
+    " iw"
+  ],
+  "result": {
+    "id": "dodsfjellet:automatgevaer"
+  }
+}

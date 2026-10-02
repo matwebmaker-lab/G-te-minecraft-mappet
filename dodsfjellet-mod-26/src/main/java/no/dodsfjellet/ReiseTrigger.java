@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ServerboundClientCommandPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,8 +31,8 @@ public final class ReiseTrigger {
     /** PvP-stasjonene (bygges av pvp-datapakken i verdenen på disse koordinatene). */
     public static final double[][] PVP = {
             {0.5, 101, 0.5, 0},      // 3 hub
-            {100.5, 101, -12.5, 0},  // 4 duell
-            {200.5, 101, -10.5, 0},  // 5 bot-trening
+            {100.5, 101, -7.5, 0},   // 4 duell (ikke oppå "Til huben"-plata)
+            {200.5, 101, -6.5, 0},   // 5 bot-trening
             {300.5, 101, 0.5, -90},  // 6 buetrening
             {400.5, 101, 0.5, -90},  // 7 bridge
             {500.5, 181, 0.5, 0},    // 8 MLG-tårnet (toppen)
@@ -45,6 +46,11 @@ public final class ReiseTrigger {
             Objective obj = objektiv(server);
             Scoreboard sb = server.getScoreboard();
             for (ServerPlayer p : server.getPlayerList().getPlayers()) {
+                // Død på PvP-øya: gjenoppstå automatisk etter et halvt sekund (havner på huben, se AFTER_RESPAWN)
+                if (p.isDeadOrDying() && p.level().dimension().equals(Reise.PVP) && p.deathTime >= 10) {
+                    p.connection.handleClientCommand(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
+                    continue;
+                }
                 var tilgang = sb.getOrCreatePlayerScore(p, obj);
                 if (tilgang.locked()) tilgang.unlock();
                 ReadOnlyScoreInfo info = sb.getPlayerScoreInfo(p, obj);
@@ -60,6 +66,7 @@ public final class ReiseTrigger {
         ServerPlayerEvents.AFTER_RESPAWN.register((gammel, ny, iLive) -> {
             if (!iLive && gammel.level().dimension().equals(Reise.PVP)) {
                 tilPvp(ny, PVP[0]);
+                ny.sendOverlayMessage(Component.literal("Du døde! Velg en ny plate på huben.").withStyle(ChatFormatting.RED));
             } else if (ny.level().dimension().equals(net.minecraft.world.level.Level.OVERWORLD) && ny.getY() < 0) {
                 Reise.tilSpawn(ny);   // ingen seng: ikke la spilleren gjenoppstå inne i berget
             }

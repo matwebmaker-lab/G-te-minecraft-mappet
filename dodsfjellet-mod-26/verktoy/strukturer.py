@@ -354,15 +354,18 @@ def loot():
         "landsby": [{"rolls": {"type": "minecraft:uniform", "min": 3, "max": 6}, "entries": [
             item(krystall, 30, (2, 6)), item("minecraft:golden_apple", 10, (1, 2)), item("minecraft:bread", 15, (2, 5)),
             item("minecraft:iron_ingot", 12, (2, 5)), item("minecraft:diamond", 4, (1, 2)), item(d("reisekompass"), 2),
-            item(d("dodsnokkel"), 1), item("minecraft:arrow", 10, (6, 16))] + [dict(r, weight=2) for r in runer]
+            item(d("dodsnokkel"), 1), item("minecraft:arrow", 10, (6, 16)),
+            item(d("pistol"), 4), item(d("hagle"), 2), item(d("kuler"), 14, (8, 24)), item(d("haglpatroner"), 8, (4, 12))] + [dict(r, weight=2) for r in runer]
                      + [dict(p, weight=1) for p in plate]}],
         "grotte": [{"rolls": {"type": "minecraft:uniform", "min": 4, "max": 7}, "entries": [
             item(krystall, 25, (4, 10)), item("minecraft:enchanted_golden_apple", 3), item("minecraft:diamond", 8, (1, 4)),
-            item(d("sjelesigd"), 2), item(d("dodsklinge"), 2)] + [dict(r, weight=5) for r in runer]
+            item(d("sjelesigd"), 2), item(d("dodsklinge"), 2), item(d("automatgevaer"), 3), item(d("snikskyttergevaer"), 2),
+            item(d("kuler"), 10, (16, 40))] + [dict(r, weight=5) for r in runer]
                     + [dict(p, weight=4) for p in plate]}],
         "tarn": [{"rolls": 1, "entries": runer},
                  {"rolls": {"type": "minecraft:uniform", "min": 2, "max": 4}, "entries": [
-                     item(krystall, 20, (2, 5)), item("minecraft:golden_apple", 6), item("minecraft:ender_pearl", 6, (1, 3))]}],
+                     item(krystall, 20, (2, 5)), item("minecraft:golden_apple", 6), item("minecraft:ender_pearl", 6, (1, 3)),
+                     item(d("snikskyttergevaer"), 1), item(d("kuler"), 8, (10, 20))]}],
         "alter": [{"rolls": {"type": "minecraft:uniform", "min": 2, "max": 4}, "entries": [
             item(krystall, 30, (1, 4)), item("minecraft:golden_apple", 8), item("minecraft:experience_bottle", 10, (2, 6))]}],
     }

@@ -39,9 +39,18 @@ public final class ModGjenstander {
             Reg.id("oppgradering"), DataComponentType.<Integer>builder().persistent(Codec.intRange(0, 10))
                     .networkSynchronized(ByteBufCodecs.VAR_INT).build());
 
+    /** Kuler i magasinet til et gevær. */
+    public static final DataComponentType<Integer> MAGASIN = Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE,
+            Reg.id("magasin"), DataComponentType.<Integer>builder().persistent(Codec.intRange(0, 999))
+                    .networkSynchronized(ByteBufCodecs.VAR_INT).build());
+
     /** Blodhøst: slagene dine heler deg. */
     public static final Holder<MobEffect> BLODHOST = Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT,
             Reg.id("blodhost"), new EnkelEffekt(MobEffectCategory.BENEFICIAL, 0xA3121E));
+
+    /** Glede: hjerter og helbreding (fra Bibelen). */
+    public static final Holder<MobEffect> GLEDE = Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT,
+            Reg.id("glede"), new GledeEffekt());
 
     public static class EnkelEffekt extends MobEffect {
         public EnkelEffekt(MobEffectCategory kategori, int farge) {
@@ -90,6 +99,27 @@ public final class ModGjenstander {
     public static final Item DODSKLINGE = Reg.item("dodsklinge", Vaapen.Dodsklinge::new,
             new Item.Properties().sword(DODSMETALL, 2.5f, -2.4f).fireResistant().rarity(Rarity.EPIC));
 
+    // ------------------------------------------------------------ glede
+    public static final Item BIBEL = Reg.item("bibel", BibelItem::new, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
+
+    // ------------------------------------------------------------ gevær og ammunisjon
+    public static final Item KULER = Reg.item("kuler", new Item.Properties().stacksTo(64));
+    public static final Item HAGLPATRONER = Reg.item("haglpatroner", new Item.Properties().stacksTo(64));
+
+    private static Item gevaer(GevaerItem.Spec spec, Rarity sjeldenhet) {
+        return Reg.item(spec.navn(), p -> new GevaerItem(p, spec), new Item.Properties().stacksTo(1).rarity(sjeldenhet));
+    }
+
+    //                                                       navn, skade, hagl, mag, nedkj, omlad, spredning, rekkevidde, auto, rekyl, tilbakeslag
+    public static final Item PISTOL = gevaer(new GevaerItem.Spec("pistol", 6.0f, 1, 12, 5, 30, 1.6f, 60, false, 2.5f, 0,
+            () -> KULER, () -> ModLyder.PISTOL, () -> ModLyder.OMLAD_PISTOL), Rarity.UNCOMMON);
+    public static final Item HAGLE = gevaer(new GevaerItem.Spec("hagle", 3.2f, 9, 6, 17, 44, 9.0f, 28, false, 7.0f, 0.25f,
+            () -> HAGLPATRONER, () -> ModLyder.HAGLE, () -> ModLyder.OMLAD_HAGLE), Rarity.RARE);
+    public static final Item AUTOMATGEVAER = gevaer(new GevaerItem.Spec("automatgevaer", 4.5f, 1, 30, 3, 46, 2.6f, 90, true, 1.4f, 0,
+            () -> KULER, () -> ModLyder.AUTOMATGEVAER, () -> ModLyder.OMLAD_AUTOMAT), Rarity.RARE);
+    public static final Item SNIKSKYTTERGEVAER = gevaer(new GevaerItem.Spec("snikskyttergevaer", 24.0f, 1, 5, 30, 64, 0.15f, 220, false, 9.0f, 0.1f,
+            () -> KULER, () -> ModLyder.SNIKSKYTTERGEVAER, () -> ModLyder.OMLAD_SNIKSKYTTER), Rarity.EPIC);
+
     // ------------------------------------------------------------ rustning
     private static Item rustning(String navn, ArmorMaterial mat, ArmorType type) {
         return Reg.item(navn, new Item.Properties().humanoidArmor(mat, type).fireResistant().rarity(Rarity.EPIC));
@@ -128,14 +158,15 @@ public final class ModGjenstander {
                 .title(Component.translatable("itemGroup.dodsfjellet"))
                 .icon(() -> new ItemStack(SJELESIGD))
                 .displayItems((params, ut) -> {
-                    for (Item i : new Item[]{SJELESIGD, DODSKLINGE, VOKTERKNUSER, SKYGGEDOLK,
+                    for (Item i : new Item[]{BIBEL, PISTOL, HAGLE, AUTOMATGEVAER, SNIKSKYTTERGEVAER, KULER, HAGLPATRONER,
+                            SJELESIGD, DODSKLINGE, VOKTERKNUSER, SKYGGEDOLK,
                             SJELEPLATE_HJELM, SJELEPLATE_BRYNJE, SJELEPLATE_BUKSER, SJELEPLATE_STOVLER,
                             FJELLVOKTER_HJELM, FJELLVOKTER_BRYNJE, FJELLVOKTER_BUKSER, FJELLVOKTER_STOVLER,
                             RUNE_SKYGGESPRANG, RUNE_SJELESKJOLD, RUNE_DODSNOVA, RUNE_BLODHOST, RUNE_ANDESPRANG, RUNE_VOKTERKALL,
                             DODSKRYSTALL, DODSNOKKEL, REISEKOMPASS, VAKT_SPAWN_EGG}) {
                         ut.accept(i);
                     }
-                    for (var b : new net.minecraft.world.level.block.Block[]{ModBlokker.OPPGRADERINGSSMIE, ModBlokker.DODSSTEIN,
+                    for (var b : new net.minecraft.world.level.block.Block[]{ModBlokker.LYSKORS, ModBlokker.OPPGRADERINGSSMIE, ModBlokker.DODSSTEIN,
                             ModBlokker.DODSSTEIN_MURSTEIN, ModBlokker.POLERT_DODSSTEIN, ModBlokker.ASKEJORD, ModBlokker.BLODMOSE,
                             ModBlokker.DODSVED_STAMME, ModBlokker.DODSVED_PLANKER, ModBlokker.SJELEGLOD, ModBlokker.DODSKRYSTALL_MALM}) {
                         ut.accept(b);

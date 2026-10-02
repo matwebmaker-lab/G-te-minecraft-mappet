@@ -110,6 +110,46 @@
         },
         {
           "type": "minecraft:item",
+          "name": "dodsfjellet:pistol",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:hagle",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:kuler",
+          "weight": 14,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 8,
+                "max": 24
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dodsfjellet:haglpatroner",
+          "weight": 8,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 12
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "dodsfjellet:rune_skyggesprang",
           "weight": 2
         },
