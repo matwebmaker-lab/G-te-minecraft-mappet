@@ -46,9 +46,24 @@ python generer_pvp.py
 Verdenen bygges i spillet med `/function dt:bygg` (som en byggmester som ser østover på -892 128 452),
 `/function df:bygg` og `/function pvp:bygg` (seed 8675309).
 
-## Installere
+## Installere (for spillere)
 
-1. CurseForge: instans med Minecraft 26.3 + Fabric, legg til **Fabric API** og **Essential**.
-2. Legg `dodsfjellet-2.0.0.jar` i `mods`.
-3. Legg verdenen `Dodsfjellet` i `saves`.
-4. Vennene dine trenger samme mod for å bli med via Essential.
+Last ned fra **[Releases](https://github.com/matwebmaker-lab/G-te-minecraft-mappet/releases/latest)**:
+
+| Fil | Hvem trenger den |
+|---|---|
+| `dodsfjellet-2.0.0.jar` | **Alle** som skal spille (verten og alle vennene) |
+| `Dodsfjellet-verden-26.3.zip` | Bare **verten** (den som åpner verdenen) |
+
+**Alle:**
+1. CurseForge → **Create Custom Profile** → Minecraft **26.3** → **Fabric**.
+2. *Add More Content* → legg til **Fabric API** og **Essential Mod**.
+3. Høyreklikk profilen → **Open Folder** → legg `dodsfjellet-2.0.0.jar` i mappa `mods`.
+
+**Verten i tillegg:**
+
+4. Pakk ut `Dodsfjellet-verden-26.3.zip` i mappa `saves` (så det blir `saves/Dodsfjellet/level.dat`).
+5. Start → **Singleplayer** → **Dødsfjellet** → `Esc` → **Invite** (Essential) for å invitere vennene.
+
+Skriv `/reise` (eller høyreklikk Reisekompasset) for å reise mellom Dødsfjellet, Dødsriket og PvP-øya.
+Verten kan følge med fra kontrollrommet med `/function df:admin`.
